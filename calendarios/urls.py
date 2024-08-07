@@ -3,6 +3,7 @@ from . import views
 from .forms import LoginForm
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.auth import views as auth_views
+from rest_framework.authtoken import views as rest_views
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -17,6 +18,7 @@ urlpatterns = [
     path('confirm_reservation/<int:id>', views.confirm_reservation, name='confirm_reservation'),
     path('delete_reservation/<int:id>', views.delete_reservation, name='delete_reservation'),
     path('change_payment/<int:id>', views.change_payment, name='change_payment'),
+    path('api-auth-token/', rest_views.obtain_auth_token),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

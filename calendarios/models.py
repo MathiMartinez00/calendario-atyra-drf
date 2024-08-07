@@ -1,4 +1,8 @@
 from django.db import models
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
 
 class Reservas(models.Model):
     ESTADOS = [
@@ -26,3 +30,8 @@ class Reservas(models.Model):
 
     def __str__(self):
         return f"ID: {self.id}, Nombre: {self.nombre}, Casa: {self.casa} {self.fecha_inicio.strftime('%d/%m/%Y')} - {self.fecha_fin.strftime('%d/%m/%Y')}"
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
