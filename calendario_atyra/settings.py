@@ -11,11 +11,14 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku
+# import django_heroku
 import dj_database_url
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -24,9 +27,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get("SECRET_KEY", "SHITTY-DEV-KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get("DEBUG_MODE", True))
+DEBUG = bool(os.environ.get("DEBUG_ON", False))
 
-ALLOWED_HOSTS = ['calendario-atyra.herokuapp.com']
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 # Application definition
 
@@ -134,9 +137,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = []
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Make this a comment to use the sqlite3 db and decomment the setting in DATABASES
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES['default'] = dj_database_url.parse(
+    f'sqlite:///{os.path.join(BASE_DIR, "database.sqlite")}'
+)
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

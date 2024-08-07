@@ -128,3 +128,9 @@ dmypy.json
 
 # VSCode settings
 .vscode/settings.json
+
+# Static files
+/static/
+
+# Test databases
+*.sqlite
