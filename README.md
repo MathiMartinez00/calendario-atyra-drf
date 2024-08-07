@@ -59,4 +59,18 @@ python3 manage.py runserver
 ```
 11. Ingresar a `http://localhost:8000` para acceder a la aplicación.
 
+# Uso de la API
 
+La aplicación utiliza autenticación por medio de tokens. Los tokens son creados automáticamente al momento de agregar usuarios. Se puede obtener el token para un usuario realizando una petición POST a `/obtain-auth-token/` con el usuario y contraseña del usuario. Un ejemplo de petición con curl es:
+
+```
+curl -X POST http://localhost:8000/api-auth-token/ -H "Content-Type: application/json" -d '{"username": "<USER>", "password": "<PASS>"}'
+```
+
+El cual dará una respuesta tipo:
+
+```
+{"token":"<TOKEN>"}
+```
+
+Para autenticar en endpoints que lo requieran se debe agregar la cabecera HTTP `Authorization: Bearer <TOKEN>`, donde `<TOKEN>` es el token conseguido al realizar una petición a `/api-auth-token/`.
