@@ -22,7 +22,7 @@ class Reservas(models.Model):
     cantidad_gratis = models.IntegerField(default=0)
     fecha_inicio = models.DateField(null=False)
     fecha_fin = models.DateField(null=False)
-    notas = models.TextField()
+    notas = models.TextField(blank=True)
     estado = models.IntegerField(default=1, choices=ESTADOS)
     tipo_adelanto = models.IntegerField(default=2, choices=TIPOS_ADELANTO)
     precio = models.IntegerField(default=0)

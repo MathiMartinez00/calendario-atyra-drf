@@ -73,4 +73,13 @@ El cual dará una respuesta tipo:
 {"token":"<TOKEN>"}
 ```
 
-Para autenticar en endpoints que lo requieran se debe agregar la cabecera HTTP `Authorization: Bearer <TOKEN>`, donde `<TOKEN>` es el token conseguido al realizar una petición a `/api-auth-token/`.
+Para autenticar en endpoints que lo requieran se debe agregar la cabecera HTTP `Authorization: Token <TOKEN>`, donde `<TOKEN>` es el token conseguido al realizar una petición a `/api-auth-token/`.
+
+Existe solo una ruta definida con datos para agregar y listar reservas `/api/reservas/`. Un ejemplo para listar las reservas es:
+```
+curl http://localhost:8000/api/reservas/ -H "Content-Type: application/json" -H "Authorization: Token <TOKEN>"
+```
+Para agregar una:
+```
+curl http://localhost:8000/api/reservas/ -H "Content-Type: application/json" -H "Authorization: Token <TOKEN>" -d '{"casa":1, "nombre":"M", "email": "a@example.com", "cantidad_adultos": 0, "fecha_inicio": "2024-03-21", "fecha_fin": "2024-03-22"}'
+```

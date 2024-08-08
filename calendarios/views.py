@@ -141,7 +141,7 @@ def view_client_form(request, id):
 
 @login_required
 def edit_client_form(request, id):
-    if requestauthentication_classes.method == "POST":
+    if request.method == "POST":
         form = AddClientForm(request.POST)
         if form.is_valid():
             # This is here to validate again with my custom clean() method in forms.py
@@ -241,7 +241,7 @@ def logout(request):
     return logout_then_login(request)
 
 
-class ReservaList(generics.ListCreateAPIView, generics.RetrieveUpdateDestroy):
+class ReservasList(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = Reservas.objects.all()
     serializer_class = ReservasSerializer
     permission_classes = [IsAuthenticated]

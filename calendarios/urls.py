@@ -19,6 +19,7 @@ urlpatterns = [
     path('delete_reservation/<int:id>', views.delete_reservation, name='delete_reservation'),
     path('change_payment/<int:id>', views.change_payment, name='change_payment'),
     path('api-auth-token/', rest_views.obtain_auth_token),
+    path('api/reservas/', views.ReservasList.as_view(), name='reservas-list'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
