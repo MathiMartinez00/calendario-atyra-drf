@@ -61,7 +61,7 @@ python3 manage.py runserver
 
 # Uso de la API
 
-La aplicación utiliza autenticación por medio de tokens. Los tokens son creados automáticamente al momento de agregar usuarios. Se puede obtener el token para un usuario realizando una petición POST a `/obtain-auth-token/` con el usuario y contraseña del usuario. Un ejemplo de petición con curl es:
+La aplicación utiliza autenticación por medio de tokens. Los tokens son creados automáticamente al momento de agregar usuarios. Se puede obtener el token para un usuario realizando una petición POST a `/obtain-auth-token/` con el usuario y contraseña del usuario. Un ejemplo de petición con `curl` es:
 
 ```
 curl -X POST http://localhost:8000/api-auth-token/ -H "Content-Type: application/json" -d '{"username": "<USER>", "password": "<PASS>"}'
