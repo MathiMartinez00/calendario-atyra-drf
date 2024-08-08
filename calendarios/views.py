@@ -3,11 +3,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout_then_login
-
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 
 # Modules from the project imports
 from .forms import AddClientForm, ChangePaymentForm, SearchReservationForm
 from .models import Reservas
+from .serializers import ReservasSerializer
 
 # Other imports
 from datetime import date, timedelta
@@ -138,7 +141,7 @@ def view_client_form(request, id):
 
 @login_required
 def edit_client_form(request, id):
-    if request.method == "POST":
+    if requestauthentication_classes.method == "POST":
         form = AddClientForm(request.POST)
         if form.is_valid():
             # This is here to validate again with my custom clean() method in forms.py
@@ -236,3 +239,10 @@ def test_mail(request):
 @login_required
 def logout(request):
     return logout_then_login(request)
+
+
+class ReservaList(generics.ListCreateAPIView, generics.RetrieveUpdateDestroy):
+    queryset = Reservas.objects.all()
+    serializer_class = ReservasSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
