@@ -81,5 +81,17 @@ curl http://localhost:8000/api/reservas/ -H "Content-Type: application/json" -H 
 ```
 Para agregar una:
 ```
-curl http://localhost:8000/api/reservas/ -H "Content-Type: application/json" -H "Authorization: Token <TOKEN>" -d '{"casa":1, "nombre":"M", "email": "a@example.com", "cantidad_adultos": 0, "fecha_inicio": "2024-03-21", "fecha_fin": "2024-03-22"}'
+curl http://localhost:8000/api/reservas/ -H "Content-Type: application/json" -H "Authorization: Token <TOKEN>" -d '{"casa":1, "nombre":"M", "email": "a@example.com", "cantidad_adultos": 1, "fecha_inicio": "2024-03-21", "fecha_fin": "2024-03-22"}'
 ```
+
+Explicación de los campos:
+- casa: Obligatorio. Representa una de las posibles casas que se pueden reservar. Acepta valores del 1 al 3.
+- nombre: Obligatorio. Nombre de la persona que realizó la reserva.
+- email: Obligatorio. Email de la persona que realizó la reserva.
+- cantidad_adultos: Obligatorio. Cantidad de adultos para la reserva.
+- fecha_inicio: Obligatorio. Fecha en la que inicia la reserva.
+- fecha_fin: Obligatorio. Fecha en la que termina la reserva.
+
+# Uso del panel de administración
+
+El panel de administración está en la ruta `admin/` (por ejemplo, `http://localhost:8000/admin/`), desde el también se pueden crear directamente entradas para reservas.
