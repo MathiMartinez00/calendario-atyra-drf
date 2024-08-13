@@ -1,5 +1,5 @@
 # Descripción 
-Este proyecto es una agenda virtual. Hecho con Django, Bootstrap y PostgreSQL.
+Este proyecto es una agenda virtual. Hecho con Django, Bootstrap y SQLite.
 
 # Requerimientos
 Tener instalado los siguientes paquetes:
