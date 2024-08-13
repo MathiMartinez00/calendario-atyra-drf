@@ -8,6 +8,12 @@ Tener instalado los siguientes paquetes:
 
 Las instrucciones en este documento fueron probadas en Ubuntu 24.04 LTS. Tener en cuenta que estas podrían cambiar según la distribución de Linux utilizada.
 
+Para instalarlos se puede correr el comando:
+
+```
+sudo apt install python3 python3-venv
+```
+
 # Pasos de instalación
 1. Clonar el repositorio: 
 ```
