@@ -64,7 +64,9 @@ python3 manage.py runserver
 La aplicación utiliza autenticación por medio de tokens. Los tokens son creados automáticamente al momento de agregar usuarios. Se puede obtener el token para un usuario realizando una petición POST a `/obtain-auth-token/` con el usuario y contraseña del usuario. Un ejemplo de petición con `curl` es:
 
 ```
-curl -X POST http://localhost:8000/api-auth-token/ -H "Content-Type: application/json" -d '{"username": "<USER>", "password": "<PASS>"}'
+curl -X POST http://localhost:8000/api-auth-token/ \
+    -H "Content-Type: application/json" \
+    -d '{"username": "<USER>", "password": "<PASS>"}'
 ```
 
 El cual dará una respuesta tipo:
@@ -77,11 +79,15 @@ Para autenticar en endpoints que lo requieran se debe agregar la cabecera HTTP `
 
 Existe solo una ruta definida con datos para agregar y listar reservas `/api/reservas/`. Un ejemplo para listar las reservas es:
 ```
-curl http://localhost:8000/api/reservas/ -H "Content-Type: application/json" -H "Authorization: Token <TOKEN>"
+curl http://localhost:8000/api/reservas/ \
+    -H "Authorization: Token <TOKEN>"
 ```
-Para agregar una:
+Para agregar una reserva:
 ```
-curl http://localhost:8000/api/reservas/ -H "Content-Type: application/json" -H "Authorization: Token <TOKEN>" -d '{"casa":1, "nombre":"M", "email": "a@example.com", "cantidad_adultos": 1, "fecha_inicio": "2024-03-21", "fecha_fin": "2024-03-22"}'
+curl http://localhost:8000/api/reservas/ \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Token <TOKEN>" \
+    -d '{"casa":1, "nombre":"M", "email": "a@example.com", "cantidad_adultos": 1, "fecha_inicio": "2024-08-14", "fecha_fin": "2024-08-18"}'
 ```
 
 Explicación de los campos:
@@ -94,4 +100,4 @@ Explicación de los campos:
 
 # Uso del panel de administración
 
-El panel de administración está en la ruta `admin/` (por ejemplo, `http://localhost:8000/admin/`), desde el también se pueden crear directamente entradas para reservas.
+El panel de administración está en la ruta `/admin/` (por ejemplo, `http://localhost:8000/admin/`), desde el también se pueden crear directamente entradas para reservas.
