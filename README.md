@@ -5,13 +5,14 @@ Este proyecto es una agenda virtual. Hecho con Django, Bootstrap y PostgreSQL.
 Tener instalado los siguientes paquetes:
 1. python3 (Python 3.8 o superior requerido)
 2. python3-venv
+3. sqlite3
 
 Las instrucciones en este documento fueron probadas en Ubuntu 24.04 LTS. Tener en cuenta que estas podrían cambiar según la distribución de Linux utilizada.
 
 Para instalarlos se puede correr el comando:
 
 ```
-sudo apt install python3 python3-venv
+sudo apt install python3 python3-venv sqlite3
 ```
 
 # Pasos de instalación
