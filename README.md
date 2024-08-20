@@ -60,6 +60,8 @@ python3 manage.py migrate
 ```
 python3 manage.py createsuperuser
 ```
+> NOTA: Para ingresar al sistema se debe utiliza el *nombre de usuario* puesto, no el correo.
+
 10. Iniciar el servidor:
 ```
 python3 manage.py runserver
